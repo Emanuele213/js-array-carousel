@@ -28,7 +28,6 @@ body {
 	align-items: center;
 	position: absolute;
 	inset: -50px;
-	z-index: 10;
 }
 
 .btn-up, .btn-down {
@@ -68,4 +67,17 @@ body {
 	height: 80px;
 	object-fit: cover;
 	object-position: center;
+	filter: brightness(.5);
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.overlay {
+	filter: brightness(1);
 }

@@ -9,6 +9,7 @@ const arrImages = [
 const eleSlider = document.querySelector('.slider');
 const eleBtnBottom = document.querySelector('.btn-down');
 const eleBtnTop = document.querySelector('.btn-up');
+const eleOver = document.querySelector('.card');
 
 // creaare i tag immagine nell'html
 for (let i = 0; i < arrImages.length; i++) {
@@ -19,12 +20,20 @@ for (let i = 0; i < arrImages.length; i++) {
 	if (i === 0) {
 		eleImg.classList.add('active');
 	}
-
 	eleSlider.append(eleImg);
+
+	const eleCard = document.createElement('img');
+	eleCard.src = arrImages[i];
+	eleCard.classList.add('img-size');
+	if (i === 0) {
+		eleImg.classList.add('overlay');
+	}
+	eleOver.append(eleCard);
 }
 // document.querySelector('.slider-img').classList.add('active');
 
 const listEleImg = document.querySelectorAll('.slider-img'); // non e' un array ma qualcosa di simile
+const listCard = document.querySelectorAll('.img-size');
 
 let activeIndex = 0;
 
@@ -32,7 +41,7 @@ let activeIndex = 0;
 eleBtnBottom.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
-	
+	listCard[activeIndex].classList.remove('overlay');
 	if (activeIndex == 4){
 		activeIndex = -1;
 	}
@@ -41,12 +50,13 @@ eleBtnBottom.addEventListener('click', function () {
 
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
+	listCard[activeIndex].classList.add('overlay');
 });
 
 eleBtnTop.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
-
+	listCard[activeIndex].classList.remove('overlay');
 	if (activeIndex == 0){
 		activeIndex = 5;
 	}
@@ -56,4 +66,5 @@ eleBtnTop.addEventListener('click', function () {
 
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
+	listCard[activeIndex].classList.add('overlay');
 });
